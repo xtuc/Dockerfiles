@@ -16,4 +16,7 @@ RUN echo "deb http://download.mono-project.com/repo/debian jessie/snapshots/$MON
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
+# Install Fable compiler
+RUN npm -g i fable-compiler
+
 CMD ["bash"]
