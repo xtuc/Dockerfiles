@@ -1,5 +1,7 @@
 FROM alpine:3.5
 
+WORKDIR /usr/ansible
+
 RUN builddeps=' \
 		python-dev \
 		py2-pip \
@@ -21,5 +23,3 @@ RUN builddeps=' \
 		ansible===2.3.0.0 \
 		six \
 	&& apk del --purge $builddeps
-
-CMD ["ansible"]

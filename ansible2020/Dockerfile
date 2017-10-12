@@ -1,11 +1,14 @@
 FROM alpine:3.5
 
+WORKDIR /usr/ansible
+
 RUN builddeps=' \
 		python-dev \
 		py2-pip \
 		musl-dev \
 		openssl-dev \
 		libffi-dev \
+		openssh-client \
 		gcc \
 		' \
 	&& apk --no-cache add \
@@ -18,8 +21,7 @@ RUN builddeps=' \
 	$builddeps \
 	&& pip install --upgrade pip \
 	&& pip install \
+		paramiko==1.17.0 \
 		ansible===2.0.2.0 \
 		six \
 	&& apk del --purge $builddeps
-
-CMD ["ansible"]
