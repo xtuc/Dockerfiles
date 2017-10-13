@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PORT=8080
-IFACE=eth0 
+IFACE=eth0
 
 fail_with() {
     echo $1
@@ -9,10 +9,11 @@ fail_with() {
 }
 
 configure() {
-    ifconfig $IFACE 
+    ifconfig $IFACE $1
 }
 
 {
+
     if [ "$BOOT_TMP_IP" = "" ]; then 
         fail_with "BOOT_TMP_IP is missing"
     fi;
@@ -29,7 +30,7 @@ configure() {
     configure $BOOT_TMP_IP
 
     # Wait for metadata to be available
-    while ! nc -z $METADATA_SERVER $PORT; do   
+    while ! nc -z $METADATA_SERVER $PORT; do
         echo "Waiting for metadata server to be up"
         sleep 1
     done
@@ -47,4 +48,5 @@ configure() {
     configure $IP
 
     echo "Custom DHCP: $IP has been assigned"
+
 } 2>&1 | tee $LOG_DEVICE
