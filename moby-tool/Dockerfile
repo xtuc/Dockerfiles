@@ -16,4 +16,4 @@ RUN mkdir -p $BUILDDIR
 COPY --from=dockerbuilder /usr/local/bin/docker /usr/bin/docker
 RUN chmod +x /usr/bin/docker
 
-ENTRYPOINT ["moby"]
+CMD ["moby"]
