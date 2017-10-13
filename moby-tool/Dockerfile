@@ -1,11 +1,14 @@
 FROM docker:17.07 as dockerbuilder
 
-FROM golang:1.8-alpine
+FROM golang:1.8-stretch
 
 ENV BUILDDIR=/usr/image/build
 
-RUN apk update
-RUN apk add git
+RUN apt-get update
+RUN apt-get install -y git
+
+# Required by linuxkit to generate raw images
+RUN apt-get install qemu-kvm
 
 RUN go get -u github.com/moby/tool/cmd/moby
 RUN go get -u github.com/linuxkit/linuxkit/src/cmd/linuxkit
