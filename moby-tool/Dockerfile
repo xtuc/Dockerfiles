@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get install -y git
 
 # Required by linuxkit to generate raw images
-RUN apt-get install qemu-kvm
+RUN apt-get install -y qemu-kvm
 
 RUN go get -u github.com/moby/tool/cmd/moby
 RUN go get -u github.com/linuxkit/linuxkit/src/cmd/linuxkit
