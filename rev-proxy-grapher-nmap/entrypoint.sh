@@ -5,7 +5,7 @@ TOPOLOGY_FILE=$DATA_DIR/$1
 SUBNET=$2
 
 OUT_DIR=$DATA_DIR/out
-SCAN_FILE=$DATA_DIR/scan.xml
+SCAN_FILE=scan.xml
 
 if [ "$USE_NMAP" = "true" ]; then
   nmap -oX $SCAN_FILE $SUBNET
