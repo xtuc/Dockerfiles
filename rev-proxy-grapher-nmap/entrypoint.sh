@@ -9,7 +9,7 @@ SCAN_FILE=scan.xml
 
 if [ "$USE_NMAP" = "true" ]; then
   nmap -oX $SCAN_FILE $SUBNET
-  NMAP_OPTS=--nmap-xml $SCAN_FILE
+  NMAP_OPTS="--nmap-xml $SCAN_FILE"
 fi
 
 mkdir -p $OUT_DIR
